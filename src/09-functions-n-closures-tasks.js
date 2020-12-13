@@ -23,9 +23,7 @@
  *
  */
 function getComposition(f, g) {
-  return function (x) {
-    return f(g(x));
-  };
+  return (x) => f(g(x));
 }
 
 /**
@@ -46,9 +44,7 @@ function getComposition(f, g) {
  */
 function getPowerFunction(exponent) {
   const power = exponent;
-  return function (x) {
-    return x ** power;
-  };
+  return (x) => x ** power;
 }
 
 /**
@@ -172,7 +168,7 @@ function logger(/* func, logFunc */) {
 function partialUsingArguments(fn, ...args1) {
   let str = '';
   const param = [...args1];
-  return function (...args2) {
+  return (...args2) => {
     const arr = param.concat([...args2]);
     str += fn(...arr);
     return str;
@@ -198,7 +194,7 @@ function partialUsingArguments(fn, ...args1) {
  */
 function getIdGeneratorFunction(startFrom) {
   let startValue = startFrom - 1;
-  return function () { startValue += 1; return startValue; };
+  return () => { startValue += 1; return startValue; };
 }
 
 module.exports = {
